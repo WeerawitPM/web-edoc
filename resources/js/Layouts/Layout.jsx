@@ -140,7 +140,7 @@ const Layout = ({ user, header, children }) => {
       title: "QF-ITC-0004",
     },
     {
-      description: "ใบทะเบียนประวัติ MA",
+      description: "ใบทะเบียนประวัติ License MA",
       startContent: (
         <TimeHistory className="text-success" fill="currentColor" size={30} />
       ),

@@ -32,6 +32,8 @@ return new class extends Migration
             $table->string("case_description")->nullable();
             $table->ipAddress('ip_address')->nullable();
             $table->macAddress('mac_address')->nullable();
+            $table->date('start_warranty_date')->nullable();
+            $table->date('end_warranty_date')->nullable();
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
         });
