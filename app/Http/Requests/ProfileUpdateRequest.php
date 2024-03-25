@@ -18,13 +18,15 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            // 'emp_code' => ['required', 'string', 'max:255'],
-            // 'telephone_no' => ['required', 'string', 'max:255'],
-            // 'position_id' => 'integer',
-            // 'depart_id' => 'integer',
-            // 'section_id' => 'integer',
-            // 'companies_id' => 'integer',
-            // 'is_active' => 'boolean',
+            'emp_code' => 'string',
+            'telephone_no' => 'string',
+            'position_id' => 'integer',
+            'depart_id' => 'integer',
+            'section_id' => 'integer',
+            'companies_id' => 'integer',
+            'avatar_img'=> 'string',
+            'signature'=> 'string',
+            'is_active' => 'boolean',
         ];
     }
 }

@@ -26,6 +26,7 @@ class User extends Authenticatable
         'section_id',
         'companies_id',
         'telephone_no',
+        'avatar_img',
         'signature',
         'is_active',
     ];

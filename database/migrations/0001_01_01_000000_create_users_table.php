@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('section_id')->nullable()->references('id')->on('sections');
             $table->foreignId('companies_id')->nullable()->references('id')->on('companies');
             $table->string('telephone_no')->nullable();
+            $table->binary('avatar_img')->nullable();
             $table->binary('signature')->nullable();
             $table->boolean('is_active')->nullable()->default(false);
             $table->rememberToken();
