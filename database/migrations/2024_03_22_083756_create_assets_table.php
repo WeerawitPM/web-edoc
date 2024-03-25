@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('asset_type_id')->references('id')->on('asset_types');
             $table->foreignId('dealer_id')->references('id')->on('dealers');
             $table->foreignId('receive_by_id')->references('id')->on('users');
-            $table->string("no", 25)->unique();
+            // $table->string("no", 25)->unique();
             $table->date('receive_date')->nullable()->useCurrent();
-            $table->string("name");
+            $table->string("name", 25)->unique();// เลขที่ทรัพย์สิน
             $table->longText("description")->nullable();
             $table->string("size")->nullable();
             $table->string("serial_no", 25)->unique();
@@ -34,6 +34,7 @@ return new class extends Migration
             $table->macAddress('mac_address')->nullable();
             $table->date('start_warranty_date')->nullable();
             $table->date('end_warranty_date')->nullable();
+            $table->boolean('is_computer')->nullable()->default(false);
             $table->boolean('is_active')->nullable()->default(false);
             $table->timestamps();
         });

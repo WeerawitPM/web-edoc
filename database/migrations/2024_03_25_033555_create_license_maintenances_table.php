@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('license_maintenances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string("name");
+            $table->string("contract_no");
             $table->foreignId('software_id')->references('id')->on('software_maintenances');
-
+            $table->foreignId('user_id')->references('id')->on('users');//ผู้รับผิดชอบ
+            $table->foreignId('assets_id')->references('id')->on('assets');
+            $table->float("ma_price")->nullable()->default(0);
+            $table->float("real_price")->nullable()->default(0);
+            $table->date("ma_date")->nullable()->useCurrent();
+            $table->string("subscription_id")->nullable();
+            $table->integer("is_status")->nullable()->default(0);//0 = None,1=Active
             $table->timestamps();
         });
     }
