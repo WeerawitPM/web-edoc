@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Position;
+use App\Models\Department;
+use App\Models\Section;
+use App\Models\Company;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
@@ -18,8 +22,16 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
+        $position = Position::all();
+        $department = Department::all();
+        $section = Section::all();
+        $companies = Company::all();
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'position' => $position,
+            'department' => $department,
+            'section' => $section,
+            'companies' => $companies,
             'status' => session('status'),
         ]);
     }
@@ -36,7 +48,8 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
-
+        $user = $request->user();
+        echo $user;
         return Redirect::route('profile.edit');
     }
 

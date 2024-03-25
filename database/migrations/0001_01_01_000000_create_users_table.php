@@ -18,11 +18,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('emp_code', 15)->nullable();
-            $table->foreignId('position_id')->references('id')->on('positions');
-            $table->foreignId('depart_id')->references('id')->on('departments');
-            $table->foreignId('section_id')->references('id')->on('sections');
-            $table->foreignId('companies_id')->references('id')->on('companies');
+            $table->foreignId('position_id')->nullable()->references('id')->on('positions');
+            $table->foreignId('depart_id')->nullable()->references('id')->on('departments');
+            $table->foreignId('section_id')->nullable()->references('id')->on('sections');
+            $table->foreignId('companies_id')->nullable()->references('id')->on('companies');
             $table->string('telephone_no')->nullable();
+            $table->binary('signature')->nullable();
             $table->boolean('is_active')->nullable()->default(false);
             $table->rememberToken();
             $table->timestamps();

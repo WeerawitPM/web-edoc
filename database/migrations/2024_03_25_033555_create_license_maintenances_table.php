@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float("real_price")->nullable()->default(0);
             $table->date("ma_date")->nullable()->useCurrent();
             $table->string("subscription_id")->nullable();
+            $table->longText("description")->nullable();
             $table->integer("is_status")->nullable()->default(0);//0 = None,1=Active
             $table->timestamps();
         });
