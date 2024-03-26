@@ -32,8 +32,6 @@ export default function UpdateProfileInformation({
       depart_id: user.depart_id,
       section_id: user.section_id,
       companies_id: user.companies_id,
-      // avatar_img: user.avatar_img,
-      // signature: user.signature,
       telephone_no: user.telephone_no,
       is_active: user.is_active,
     });
@@ -60,21 +58,22 @@ export default function UpdateProfileInformation({
         </p>
       </header>
 
-      <form onSubmit={submit} className="mt-6 space-y-6" enctype="multipart/form-data">
-        <div className="flex justify-center items-center">
-          <Avatar
-            src="https://i.pravatar.cc/150?u=a04258114e29026708c"
-            className="w-36 h-36 text-large hover:cursor-pointer"
-            onClick={e => inputFileRef.current.click()}
-          />
-          <input
-            type="file"
-            ref={inputFileRef}
-            onChange={(e) => setData("avatar_img", e.target.files[0])}
-            style={{ display: "none" }}
-            id="avatar_id"
-          />
-        </div>
+      <div className="flex justify-center items-center">
+        <Avatar
+          src="https://i.pravatar.cc/150?u=a04258114e29026708c"
+          className="w-36 h-36 text-large hover:cursor-pointer"
+          onClick={(e) => inputFileRef.current.click()}
+        />
+        <input
+          type="file"
+          ref={inputFileRef}
+          onChange={(e) => setData("avatar_img", e.target.files[0])}
+          style={{ display: "none" }}
+          id="avatar_id"
+        />
+      </div>
+
+      <form onSubmit={submit} className="mt-6 space-y-6">
         <>
           <InputLabel htmlFor="name" value="Name" />
 
@@ -190,27 +189,6 @@ export default function UpdateProfileInformation({
 
           <InputError className="mt-2" message={errors.telephone_no} />
         </>
-        <Divider />
-        <>
-          <Image
-            fill={true}
-            placeholder="blur"
-            loading="lazy"
-            width={200}
-            height={200}
-            src="/signature_001.png"
-            alt="NextUI hero Image"
-            onClick={e => inputFileSignatureRef.current.click()}
-            className="hover:cursor-pointer"
-          />
-          <input
-            type="file"
-            ref={inputFileSignatureRef}
-            onChange={(e) => setData("signature", e.target.files[0])}
-            style={{ display: "none" }}
-            id="avatar_id"
-          />
-        </>
         <>{/* <Checkbox isDisabled defaultSelected>Is Active</Checkbox> */}</>
 
         {mustVerifyEmail && user.email_verified_at === null && (
@@ -249,6 +227,27 @@ export default function UpdateProfileInformation({
           </Transition>
         </div>
       </form>
+      <Divider />
+      <>
+        <Image
+          fill={true}
+          placeholder="blur"
+          loading="lazy"
+          width={200}
+          height={200}
+          src="/signature_001.png"
+          alt="NextUI hero Image"
+          onClick={(e) => inputFileSignatureRef.current.click()}
+          className="hover:cursor-pointer"
+        />
+        <input
+          type="file"
+          ref={inputFileSignatureRef}
+          onChange={(e) => setData("signature", e.target.files[0])}
+          style={{ display: "none" }}
+          id="avatar_id"
+        />
+      </>
     </section>
   );
 }

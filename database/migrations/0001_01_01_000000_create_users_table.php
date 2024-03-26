@@ -23,8 +23,6 @@ return new class extends Migration
             $table->foreignId('section_id')->nullable()->references('id')->on('sections');
             $table->foreignId('companies_id')->nullable()->references('id')->on('companies');
             $table->string('telephone_no')->nullable();
-            $table->binary('avatar_img')->nullable();
-            $table->binary('signature')->nullable();
             $table->boolean('is_active')->nullable()->default(false);
             $table->rememberToken();
             $table->timestamps();
@@ -44,6 +42,16 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        Schema::create('upload_avatar_image_files', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->nullable()->references('id')->on('users');
+            $table->text('filename');
+            $table->text('original_name');
+            $table->text('file_path');
+            $table->integer("file_type")->nullable()->default(0);//0=Avatar,1=Signature
+            $table->timestamps();
+        });
     }
 
     /**
@@ -54,5 +62,6 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('upload_avatar_image_files');
     }
 };

@@ -24,8 +24,6 @@ class ProfileUpdateRequest extends FormRequest
             'depart_id' => 'integer',
             'section_id' => 'integer',
             'companies_id' => 'integer',
-            'avatar_img'=> 'string',
-            'signature'=> 'string',
             'is_active' => 'boolean',
         ];
     }
