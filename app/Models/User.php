@@ -26,10 +26,20 @@ class User extends Authenticatable
         'section_id',
         'companies_id',
         'telephone_no',
-        'avatar_img',
-        'signature',
         'is_active',
     ];
+
+    public function position_ids() {
+        return $this->hasOne(Position::class,"id","position_id");
+    }
+
+    public function depart_ids() {
+        return $this->hasOne(Department::class,"id","depart_id");
+    }
+
+    public function companies_ids() {
+        return $this->hasOne(Company::class,"id","companies_id");
+    }
 
     /**
      * The attributes that should be hidden for serialization.

@@ -38,7 +38,9 @@ const CustomDropdownMenu = ({ title, menus }) => {
               description={i.description}
               startContent={i.startContent}
             >
-              {x + 1}.{i.title}
+              <Link href={route(i.href)}>
+                {x + 1}.{i.title}
+              </Link>
             </DropdownItem>
           ))
         ) : (

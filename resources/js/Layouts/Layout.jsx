@@ -79,6 +79,7 @@ const Layout = ({ user, header, children }) => {
         <Edit className="text-primary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0001",
+      href: "request.equipment",
     },
     {
       description: "ใบแจ้งซอมอุปกรณ์สารสนเทศ",
@@ -86,6 +87,7 @@ const Layout = ({ user, header, children }) => {
         <Chat className="text-secondary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0002",
+      href: "request.equipment",
     },
     {
       description: "แบบคำร้องขอเพิ่มระบบและแก้ไขปรับปรุงระบบ",
@@ -93,6 +95,7 @@ const Layout = ({ user, header, children }) => {
         <AddPlus className="text-success" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0003",
+      href: "request.equipment",
     },
     {
       description: "แบบคำร้องขอใช้งานอีเมล",
@@ -100,6 +103,7 @@ const Layout = ({ user, header, children }) => {
         <Email className="text-warning" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0005",
+      href: "request.equipment",
     },
     {
       description: "แบบคำร้องขอใช้งานระบบ Domain",
@@ -107,6 +111,7 @@ const Layout = ({ user, header, children }) => {
         <DomainName className="text-secondary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0006",
+      href: "request.equipment",
     },
     {
       description: "แบบคำร้องขอยกเลิกโดเมน อีเมล",
@@ -114,6 +119,7 @@ const Layout = ({ user, header, children }) => {
         <DomainName className="text-danger" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0007",
+      href: "request.equipment",
     },
     {
       description: "ใบขอยืมใช้อุปกรณ์สารสนเทศของส่วนกลาง",
@@ -121,13 +127,19 @@ const Layout = ({ user, header, children }) => {
         <Server className="text-success" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0009",
+      href: "request.equipment",
     },
     {
       description: "ใบขอเบิกอุปกรณ์ไอที",
       startContent: (
-        <FolderDownload className="text-primary" fill="currentColor" size={30} />
+        <FolderDownload
+          className="text-primary"
+          fill="currentColor"
+          size={30}
+        />
       ),
       title: "QF-ITC-0010",
+      href: "request.equipment",
     },
   ];
 
@@ -138,6 +150,7 @@ const Layout = ({ user, header, children }) => {
         <Stack className="text-primary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0004",
+      href: "request.equipment",
     },
     {
       description: "ใบทะเบียนประวัติ License MA",
@@ -145,8 +158,9 @@ const Layout = ({ user, header, children }) => {
         <TimeHistory className="text-success" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0004",
+      href: "request.equipment",
     },
-  ]
+  ];
 
   const menuPlan = [
     {
@@ -155,6 +169,7 @@ const Layout = ({ user, header, children }) => {
         <Stack className="text-primary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0008",
+      href: "request.equipment",
     },
     {
       description: "แบบฟอร์มการตรวจสอบด้านเครื่องคอมพิวเตอร์แม่ข่าย (SERVER)",
@@ -162,6 +177,7 @@ const Layout = ({ user, header, children }) => {
         <Server className="text-success" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0011",
+      href: "request.equipment",
     },
     {
       description: "Check List อุปกรณ์สำรองข้อมูล",
@@ -169,78 +185,91 @@ const Layout = ({ user, header, children }) => {
         <Stack className="text-secondary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0012",
-    },// QF-ITC-0012 Check List อุปกรณ์สำรองข้อมูล
+      href: "request.equipment",
+    }, // QF-ITC-0012 Check List อุปกรณ์สำรองข้อมูล
     {
       description: "แบบฟอร์มการตรวจสอบด้านระบบเครื่อข่าย (Network)",
       startContent: (
         <NetworkWifi className="text-danger" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0013",
-    },// QF-ITC-0013 แบบฟอร์มการตรวจสอบด้านระบบเครื่อข่าย (Network)
+      href: "request.equipment",
+    }, // QF-ITC-0013 แบบฟอร์มการตรวจสอบด้านระบบเครื่อข่าย (Network)
     {
       description: "HANHELD & SCANNER MAINTENANCE CHECK LIST",
       startContent: (
         <QRCodeScanner className="text-info" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0014",
-    },// QF-ITC-0014 HANHELD & SCANNER MAINTENANCE CHECK LIST
+      href: "request.equipment",
+    }, // QF-ITC-0014 HANHELD & SCANNER MAINTENANCE CHECK LIST
     {
       description: "UPS SERVER MAINTENANCE CHECK LIST",
       startContent: (
         <Stack className="text-success" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0015",
-    },// QF-ITC-0015 UPS SERVER MAINTENANCE CHECK LIST
+      href: "request.equipment",
+    }, // QF-ITC-0015 UPS SERVER MAINTENANCE CHECK LIST
     {
       description: "PRINTTER DOT MATRIX MAINTENANCE CHECK LIST",
       startContent: (
         <Printer className="text-warning" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0016",
-    },// QF-ITC-0016 PRINTTER DOT MATRIX MAINTENANCE CHECK LIST
+      href: "request.equipment",
+    }, // QF-ITC-0016 PRINTTER DOT MATRIX MAINTENANCE CHECK LIST
     {
-      description: "แบบฟอร์มการตรวจสอบตำนอุปกรณ์ป้องกันการโจมตีผ่านระบบเคร็อขาย (Firewall)",
+      description:
+        "แบบฟอร์มการตรวจสอบตำนอุปกรณ์ป้องกันการโจมตีผ่านระบบเคร็อขาย (Firewall)",
       startContent: (
         <FingerPrinter className="text-danger" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0017",
-    },// QF-ITC-0017 แบบฟอร์มการตรวจสอบตำนอุปกรณ์ป้องกันการโจมตีผ่านระบบเคร็อขาย (Firewall)
+      href: "request.equipment",
+    }, // QF-ITC-0017 แบบฟอร์มการตรวจสอบตำนอุปกรณ์ป้องกันการโจมตีผ่านระบบเคร็อขาย (Firewall)
     {
       description: "CCTV MAINTENANCE CHECK LIST",
       startContent: (
         <CameraCCTV className="text-secondary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0018",
-    },// QF-ITC-0018 CCTV MAINTENANCE CHECK LIST
+      href: "request.equipment",
+    }, // QF-ITC-0018 CCTV MAINTENANCE CHECK LIST
     {
       description: "Data Backup Plan",
       startContent: (
         <Stack className="text-primary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0019",
-    },// QF-ITC-0019 Data Backup Plan
+      href: "request.equipment",
+    }, // QF-ITC-0019 Data Backup Plan
     {
       description: "แบบฟอมบันทึกผลการสำรองข้อมูล",
       startContent: (
         <CheckList className="text-success" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0020",
-    },// QF-ITC-0020 แบบฟอมบันทึกผลการสำรองข้อมูล
+      href: "request.equipment",
+    }, // QF-ITC-0020 แบบฟอมบันทึกผลการสำรองข้อมูล
     {
       description: "Checklist ของการกู้คืนบริการระบบสารสนเทศ",
       startContent: (
         <RollBack className="text-secondary" fill="currentColor" size={30} />
       ),
       title: "QF-ITC-0021",
-    },// QF-ITC -0021 Checklist ของการกู้คืนบริการระบบสารสนเทศ
-  ]
+      href: "request.equipment",
+    }, // QF-ITC -0021 Checklist ของการกู้คืนบริการระบบสารสนเทศ
+  ];
 
   return (
     <div className="min-h-full">
       <Navbar isBordered maxWidth="xl">
         <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">EDM</p>
+          <Link href="/">
+            <AcmeLogo />
+            <p className="font-bold text-inherit">EDM</p>
+          </Link>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem isActive={route().current("dashboard")}>
@@ -248,18 +277,9 @@ const Layout = ({ user, header, children }) => {
               หน้าแรก
             </Link>
           </NavbarItem>
-          <CustomDropdownMenu
-            title="แบบฟอร์มร้องขอ"
-            menus={menuRequest}
-          />
-          <CustomDropdownMenu
-            title="แบบฟอร์มลงทะเบียน"
-            menus={menuRegister}
-          />
-          <CustomDropdownMenu
-            title="แผนการทำงาน"
-            menus={menuPlan}
-          />
+          <CustomDropdownMenu title="แบบฟอร์มร้องขอ" menus={menuRequest} />
+          <CustomDropdownMenu title="แบบฟอร์มลงทะเบียน" menus={menuRegister} />
+          <CustomDropdownMenu title="แผนการทำงาน" menus={menuPlan} />
           <NavbarItem>
             <Link color="foreground" href="#">
               รายงาน
