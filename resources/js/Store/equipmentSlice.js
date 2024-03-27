@@ -1,30 +1,39 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const equipmentSlice = createSlice({
-  name: 'equipment',
+  name: "equipment",
   initialState: {
-    qty: 0,
-    equipmentData: [
-
-    ],
+    data: [],
   },
   reducers: {
     addEquipment: (state, action) => {
-
+      const obj = action.payload;
+      const newTodo = {
+        id: state.data.length + 1,
+        name: obj.asset.name,
+        asset: obj.asset,
+        remark: obj.remark,
+        qty: obj.qty,
+      };
+      let index = state.data.findIndex((el) => el.name == obj.asset.name);
+      if (index < 0) {
+        state.data.push(newTodo);
+      }
     },
-    increment: (state) => {
-      state.qty += 1
+    deleteEquipment: (state, action) => {
+      console.dir(action.payload);
+      const index = state.data.findIndex((todo) => todo.id === action.payload.id);
+      if (index !== -1) {
+        state.data.splice(index, 1);
+      }
     },
-    decrement: (state) => {
-      state.qty -= 1
-    },
-    incrementByAmount: (state, action) => {
-      state.qty += action.payload
+    deleteAll: (state) => {
+      state.data = [];
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = equipmentSlice.actions
-
-export default equipmentSlice.reducer
+export const { addEquipment, deleteEquipment, deleteAll } =
+  equipmentSlice.actions;
+export default equipmentSlice.reducer;

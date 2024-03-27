@@ -9,7 +9,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import ConfirmDeleteEquipment from "./ConfirmDeleteEquipment";
 import DialogAddEquipment from "./DialogAddEquipment";
 
@@ -17,71 +17,46 @@ const AddEquipmentItem = ({
   mustVerifyEmail,
   status,
   className = "",
-  id = "",
-  purpose_text,
-  remark,
   problem = [],
   asset = [],
 }) => {
-  const count = useSelector((state) => state.equipment.qty)
-  const equipmentListData = useSelector((state) => state.equipment)
-  console.dir(equipmentListData)
+  const equipmentListData = useSelector((state) => state.equipment.data);
+  console.dir(equipmentListData);
 
   return (
     <section className={className}>
       <TableContainer>
         <Table variant="simple">
-          <TableCaption>IT equipment Request List {count}</TableCaption>
+          <TableCaption>IT equipment Request List {equipmentListData?.length}</TableCaption>
           <Thead>
             <Tr>
               <Th>#</Th>
-              <Th>Type</Th>
-              <Th>Title</Th>
+              <Th>Asset</Th>
+              <Th>Description</Th>
               <Th isNumeric>Qty</Th>
               <Th>
-                <DialogAddEquipment
-                  purpose_text={purpose_text}
-                  remark={remark}
-                  problem={problem}
-                  asset={asset}
-                />
+                <DialogAddEquipment problem={problem} asset={asset} />
               </Th>
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>1</Td>
-              <Td>inches</Td>
-              <Td>millimetres (mm)</Td>
-              <Td isNumeric>25.4</Td>
-              <Td>
-                <ConfirmDeleteEquipment />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>2</Td>
-              <Td>feet</Td>
-              <Td>centimetres (cm)</Td>
-              <Td isNumeric>30.48</Td>
-              <Td>
-                <ConfirmDeleteEquipment />
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>3</Td>
-              <Td>yards</Td>
-              <Td>metres (m)</Td>
-              <Td isNumeric>914</Td>
-              <Td>
-                <ConfirmDeleteEquipment />
-              </Td>
-            </Tr>
+            {equipmentListData?.map((i, x) => (
+              <Tr key={i.id}>
+                <Td>{x + 1}</Td>
+                <Td>{i.asset.name}</Td>
+                <Td>{i.remark}</Td>
+                <Td isNumeric>{i.qty}</Td>
+                <Td>
+                  <ConfirmDeleteEquipment obj={i} title={`Confirm Delete ${i.name}!`}/>
+                </Td>
+              </Tr>
+            ))}
           </Tbody>
           <Tfoot>
             <Tr>
               <Th>#</Th>
-              <Th>Type</Th>
-              <Th>Title</Th>
+              <Th>Asset</Th>
+              <Th>Description</Th>
               <Th isNumeric>Sum</Th>
               <Th></Th>
             </Tr>

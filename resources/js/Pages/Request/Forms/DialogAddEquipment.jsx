@@ -1,3 +1,4 @@
+import { addEquipment } from "@/Store/equipmentSlice";
 import { AddIcon } from "@chakra-ui/icons";
 import {
   AlertDialog,
@@ -7,56 +8,57 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  IconButton,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
+  IconButton,
   Input,
+  Textarea,
   Select,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Divider } from "@nextui-org/react";
-import { useEffect, useRef, useState } from "react";
 import { useForm, usePage } from "@inertiajs/react";
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '@/Store/equipmentSlice'
+import { Divider } from "@nextui-org/react";
+import { useRef } from "react";
+import { useDispatch } from "react-redux";
 
 const DialogAddEquipment = ({
-  id = null,
   title = "Add Item",
   description = "Are you sure? You can't undo this action afterwards.",
-  purpose_text = "",
-  remark = "",
   problem = [],
   asset = [],
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef();
-  const user = usePage().props.auth.user;
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { data, setData, post, errors, processing, recentlySuccessful } =
     useForm({
-      id: id,
-      purpose: purpose_text,
-      remark: remark,
-      user_id: user.id,
-      problem: "0",
+      // problem: "0",
       asset: "0",
+      remark: "-",
       qty: 1,
     });
 
   const handleSave = (e) => {
     e.preventDefault();
-    post(route("request.equipment_store"));
+    // post(route("request.equipment_store"));
+    // let problemObj = problem.find((i) => i.id === parseInt(data.problem));
+    let assetObj = asset.find((i) => i.id === parseInt(data.asset));
+    dispatch(
+      addEquipment({
+        // problem: problemObj,
+        asset: assetObj,
+        remark: data.remark,
+        qty: data.qty,
+      })
+    );
     onClose();
   };
 
   return (
     <>
       <IconButton color={"blue"} icon={<AddIcon />} onClick={onOpen} />
-      <form onSubmit={handleSave}>
+      <form>
         <AlertDialog
           motionPreset="slideInBottom"
           leastDestructiveRef={cancelRef}
@@ -72,7 +74,7 @@ const DialogAddEquipment = ({
               <AlertDialogBody>
                 <Divider />
                 <div className="pt-4 flex flex-wrap gap-0">
-                  <>
+                  {/* <>
                     <FormControl>
                       <FormLabel>Select Type</FormLabel>
                       <Select
@@ -87,7 +89,7 @@ const DialogAddEquipment = ({
                         ))}
                       </Select>
                     </FormControl>
-                  </>
+                  </> */}
                   <>
                     <FormControl className="pt-4">
                       <FormLabel>Select Asset</FormLabel>
@@ -106,6 +108,20 @@ const DialogAddEquipment = ({
                   </>
                   <>
                     <FormControl className="pt-4">
+                      <FormLabel>
+                        Device Specification/Software version
+                      </FormLabel>
+                      <Textarea
+                        required
+                        placeholder="Device Specification/Software version"
+                        size="md"
+                        value={data.remark}
+                        onChange={e => setData("remark", e.target.value)}
+                      />
+                    </FormControl>
+                  </>
+                  <>
+                    <FormControl className="pt-4">
                       <FormLabel>Quality</FormLabel>
                       <Input
                         type="number"
@@ -120,16 +136,7 @@ const DialogAddEquipment = ({
                 <Button ref={cancelRef} onClick={onClose}>
                   Cancel
                 </Button>
-                {/* <Button type="submit" colorScheme="blue" onClick={handleSave} ml={3}>
-                  Save
-                </Button> */}
-                <Button colorScheme="blue" onClick={() => dispatch(increment({
-                  problem_id: 0,
-                  problem_name: "python",
-                  asset_id: 0,
-                  asset_name: "-0-",
-                  qty: 100,
-                }))} ml={3}>
+                <Button colorScheme="blue" onClick={handleSave} ml={3}>
                   Save
                 </Button>
               </AlertDialogFooter>

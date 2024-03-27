@@ -1,10 +1,9 @@
 import Layout from "@/Layouts/Layout";
+import { Text, Textarea } from "@chakra-ui/react";
 import { Head, usePage } from "@inertiajs/react";
-import RequestorDetail from "./Forms/RequestorDetail";
-import EquipmentRemark from "./Forms/EquipmentRemark";
 import { Divider } from "@nextui-org/react";
 import AddEquipmentItem from "./Forms/AddEquipmentItem";
-import { Button, Text, Textarea } from "@chakra-ui/react";
+import RequestorDetail from "./Forms/RequestorDetail";
 
 const AddEquipment = ({ auth, mustVerifyEmail, status }) => {
   return (
@@ -34,15 +33,12 @@ const AddEquipment = ({ auth, mustVerifyEmail, status }) => {
             <div className="pt-4">
               <>
                 <Text mb="8px">Purpose Of Usage</Text>
-                <Textarea placeholder="Please write in detail." size="md" />
-              </>
-              <div className="pt-4">
-                <Text mb="8px">Device Specification/Software version</Text>
                 <Textarea
-                  placeholder="Device Specification/Software version"
+                  required
+                  placeholder="Please write in detail."
                   size="md"
                 />
-              </div>
+              </>
             </div>
           </div>
           <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
