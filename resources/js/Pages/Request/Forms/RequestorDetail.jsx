@@ -1,17 +1,9 @@
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
-} from "@chakra-ui/react";
 import { usePage } from "@inertiajs/react";
+import { Chip } from "@nextui-org/react";
 
 const RequestorDetail = ({ mustVerifyEmail, status, className = "" }) => {
   // const userAth = usePage().props.auth.user;
   const user = usePage().props.obj;
-
-  console.dir(user)
 
   return (
     <section className={className}>
@@ -21,46 +13,64 @@ const RequestorDetail = ({ mustVerifyEmail, status, className = "" }) => {
         </h2>
       </header>
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4 pt-4">
-        <>
-          <FormControl>
-            <FormLabel>Name</FormLabel>
-            <Input type="text" readOnly value={user.name}/>
-          </FormControl>
-        </>
-        <>
-          <FormControl>
-            <FormLabel>Emp ID.</FormLabel>
-            <Input type="text" readOnly value={user.emp_code}/>
-          </FormControl>
-        </>
+        <div className="flex justify-start items-start space-x-4">
+          <div>
+            Name:{" "}
+            <Chip color="success" size="xs">
+              {user.name}
+            </Chip>
+          </div>
+          <div>
+            Emp ID.:{" "}
+            {user.emp_code != null ? (
+              <Chip color="success" size="xs">
+                {user.emp_code}
+              </Chip>
+            ) : null}
+          </div>
+        </div>
       </div>
       <div className="flex w-full flex-wrap md:flex-nowrap gap-4 pt-4">
-        <>
-          <FormControl>
-            <FormLabel>Company</FormLabel>
-            <Input type="text" readOnly value={user.companies_ids.name}/>
-          </FormControl>
-        </>
-        <>
-          <FormControl>
-            <FormLabel>Position</FormLabel>
-            <Input type="text" readOnly value={user.position_ids.name}/>
-          </FormControl>
-        </>
-        <>
-          <FormControl>
-            <FormLabel>Department/Section</FormLabel>
-            <Input type="text" readOnly value={user.depart_ids.name}/>
-          </FormControl>
-        </>
-      </div>
-      <div className="flex w-full flex-wrap md:flex-nowrap gap-4 pt-4">
-        <>
-          <FormControl>
-            <FormLabel>Telephone/Mobile No.</FormLabel>
-            <Input htmlSize={50} width={"auto"} type="text" readOnly value={user.telephone_no}/>
-          </FormControl>
-        </>
+        <div className="flex justify-start items-start space-x-4">
+          <div>
+            Company:{" "}
+            {user.companies_ids != null ? (
+              <Chip color="success" size="xs">
+                {user.companies_ids?.name}{" "}
+              </Chip>
+            ) : (
+              "-"
+            )}
+          </div>
+          <div>
+            Position:{" "}
+            {user.position_ids != null ? (
+              <Chip color="success" size="xs">
+                {user.position_ids?.name}
+              </Chip>
+            ) : (
+              "-"
+            )}
+          </div>
+          <div>
+            Department/Section:{" "}
+            {user.depart_ids != null ? (
+              <Chip color="success" size="xs">
+                {user.depart_ids?.name}
+              </Chip>
+            ) : (
+              "-"
+            )}
+          </div>
+          <div>
+            Telephone/Mobile No.:{" "}
+            {user.telephone_no != null ? (
+              <Chip color="success" size="xs">
+                {user.telephone_no}
+              </Chip>
+            ) : null}
+          </div>
+        </div>
       </div>
     </section>
   );

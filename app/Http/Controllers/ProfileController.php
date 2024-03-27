@@ -48,8 +48,6 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
-        $user = $request->user();
-        echo $user;
         return Redirect::route('profile.edit');
     }
 

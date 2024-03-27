@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
     ### Route Request ###
     Route::get("/request/index", [RequestEquipmentController::class, 'index'])->name('request.equipment');
     Route::get("/request/add", [RequestEquipmentController::class, 'create'])->name('request.equipment_add');
+    Route::post("/request/add", [RequestEquipmentController::class, 'store'])->name('request.equipment_store');
+    Route::get("/request/show/{id}", [RequestEquipmentController::class, 'show'])->name('request.equipment_show');
 });
 
 require __DIR__.'/auth.php';

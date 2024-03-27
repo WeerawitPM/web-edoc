@@ -6,6 +6,8 @@ import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { NextUIProvider } from "@nextui-org/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { Provider } from "react-redux";
+import store from '@/Store/store'
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
@@ -20,11 +22,13 @@ createInertiaApp({
     const root = createRoot(el);
 
     root.render(
-      <ChakraProvider>
-        <NextUIProvider>
-          <App {...props} />
-        </NextUIProvider>
-      </ChakraProvider>
+      <Provider store={store}>
+        <ChakraProvider>
+          <NextUIProvider>
+            <App {...props} />
+          </NextUIProvider>
+        </ChakraProvider>
+      </Provider>
     );
   },
   progress: {

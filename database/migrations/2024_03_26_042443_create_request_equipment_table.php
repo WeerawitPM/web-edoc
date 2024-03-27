@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('request_equipment', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
             $table->string("document_no", 15)->unique();//document no
             $table->date("request_date")->nullable()->useCurrent();
             $table->integer("revision_seq")->nullable()->default(1);

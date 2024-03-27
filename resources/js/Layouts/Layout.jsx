@@ -1,48 +1,39 @@
-import React from "react";
+import { AcmeLogo } from "@/Components/AcmeLogo";
+import CustomDropdownMenu from "@/Components/CustomDropdownMenu";
 import {
+  AddPlus,
+  CameraCCTV,
+  Chat,
+  CheckList,
+  DomainName,
+  Edit,
+  Email,
+  FingerPrinter,
+  FolderDownload,
+  NetworkWifi,
+  NotificationIcon,
+  Printer,
+  QRCodeScanner,
+  RollBack,
+  Server,
+  Stack,
+  TimeHistory
+} from "@/Components/Icons";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Button,
-  Badge,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  Avatar,
 } from "@nextui-org/react";
-import {
-  ChevronDown,
-  Lock,
-  Activity,
-  Flash,
-  Server,
-  TagUser,
-  Scale,
-  NotificationIcon,
-  Edit,
-  Email,
-  DomainName,
-  Cancel,
-  Stack,
-  FolderDownload,
-  AddPlus,
-  Chat,
-  TimeHistory,
-  NetworkWifi,
-  QRCodeScanner,
-  Printer,
-  Firewall,
-  CameraCCTV,
-  FingerPrinter,
-  RollBack,
-  CheckList,
-} from "@/Components/Icons";
-import { AcmeLogo } from "@/Components/AcmeLogo";
-import CustomDropdownMenu from "@/Components/CustomDropdownMenu";
-import { SearchIcon } from "@/Components/SearchIcon";
+import React from "react";
 
 const Layout = ({ user, header, children }) => {
   const [isInvisible, setIsInvisible] = React.useState(false);
